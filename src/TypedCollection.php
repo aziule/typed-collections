@@ -4,7 +4,7 @@ namespace Aziule\TypedCollections;
 
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess, \Iterator
+abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess, \Iterator, \Countable
 {
     /** @var array */
     private $items;
@@ -112,5 +112,13 @@ abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess
     public function rewind()
     {
         $this->position = 0;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function count()
+    {
+        return count($this->items);
     }
 }
