@@ -2,7 +2,6 @@
 
 namespace Aziule\TypedCollections;
 
-use Aziule\TypedCollections\Exception\InvalidClassException;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
 abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess, \Iterator
