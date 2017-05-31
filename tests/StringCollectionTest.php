@@ -5,11 +5,11 @@ namespace Aziule\Test\TypedCollection;
 use Aziule\TypedCollections\StringCollection;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-class StringCollectionTest extends BaseCollectionTest
+class StringCollectionTest extends AbstractCollectionTest
 {
     public function test_create_empty_object()
     {
-        $collection = new StringCollection([]);
+        $collection = new StringCollection();
         $this->assertCount(0, $collection);
     }
 
@@ -19,7 +19,6 @@ class StringCollectionTest extends BaseCollectionTest
 
         $collection = new StringCollection($initialData);
         $this->assertCount(count($initialData), $collection);
-
         $this->assertCollectionEqualsData($initialData, $collection);
     }
 

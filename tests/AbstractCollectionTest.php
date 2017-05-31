@@ -4,7 +4,7 @@ namespace Aziule\Test\TypedCollection;
 
 use Aziule\TypedCollections\TypedCollectionInterface;
 
-abstract class BaseCollectionTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @param array $expected

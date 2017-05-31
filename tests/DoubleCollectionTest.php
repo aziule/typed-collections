@@ -5,11 +5,11 @@ namespace Aziule\Test\TypedCollection;
 use Aziule\TypedCollections\DoubleCollection;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-class DoubleCollectionTest extends BaseCollectionTest
+class DoubleCollectionTest extends AbstractCollectionTest
 {
     public function test_create_empty_object()
     {
-        $collection = new DoubleCollection([]);
+        $collection = new DoubleCollection();
         $this->assertCount(0, $collection);
     }
 
@@ -23,7 +23,6 @@ class DoubleCollectionTest extends BaseCollectionTest
 
         $collection = new DoubleCollection($initialData);
         $this->assertCount(count($initialData), $collection);
-
         $this->assertCollectionEqualsData($initialData, $collection);
     }
 

@@ -5,11 +5,11 @@ namespace Aziule\Test\TypedCollection;
 use Aziule\TypedCollections\BooleanCollection;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-class BooleanCollectionTest extends BaseCollectionTest
+class BooleanCollectionTest extends AbstractCollectionTest
 {
     public function test_create_empty_object()
     {
-        $collection = new BooleanCollection([]);
+        $collection = new BooleanCollection();
         $this->assertCount(0, $collection);
     }
 
@@ -19,7 +19,6 @@ class BooleanCollectionTest extends BaseCollectionTest
 
         $collection = new BooleanCollection($initialData);
         $this->assertCount(count($initialData), $collection);
-
         $this->assertCollectionEqualsData($initialData, $collection);
     }
 

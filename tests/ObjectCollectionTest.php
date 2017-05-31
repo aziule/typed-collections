@@ -6,7 +6,7 @@ use Aziule\TypedCollections\Exception\ClassNotFoundException;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 use Aziule\TypedCollections\ObjectCollection;
 
-class ObjectCollectionTest extends BaseCollectionTest
+class ObjectCollectionTest extends AbstractCollectionTest
 {
     public function test_create_empty_object()
     {
@@ -27,7 +27,6 @@ class ObjectCollectionTest extends BaseCollectionTest
 
         $collection = new ObjectCollection(\stdClass::class, $initialData);
         $this->assertCount(count($initialData), $collection);
-
         $this->assertCollectionEqualsData($initialData, $collection);
     }
 
