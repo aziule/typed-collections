@@ -1,4 +1,4 @@
-# typed-collections
+# Typed Collections
 
 > TLDR;
 >
