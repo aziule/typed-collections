@@ -11,28 +11,35 @@ PHP is (somehow) good, but its dynamically typed nature can lead bad developers 
 This is especially true for collections (arrays) of items, where one can only rely on the PHPDoc (if any / if up-to-date / if accurate) 
 or on a variable's name to guess what the array actually contains:
 
+**Absolute worst case:**
 ```php
 public function ($elements); // WTF is inside this $elements?
 ```
 
+**Very bad:**
 ```php
 public function (array $ips); // WTF is inside this array? Strings? Ints? Objects? Is it an associative array? Jesus F*
 ```
 
+**Bad - and unfortunately, too common:**
 ```php
 /**
 * @param array $ips
-* OK it's an array, but still: an array of WHAT?
 */
 public function (array $ips);
+
+// OK it's an array, but still: an array of WHAT?
 ```
 
+**Considered the "best" - still not convincing:**
 ```php
 /**
 * @param MyObject[] $objects
-* WOW, we now have some "typing". But still, we can do $objects[] = 42, which will break the array typing (we will have objects AND an integer).
 */
 public function (array $objects);
+
+// WOW, we now have some "typing". But still, we can do $objects[] = 42, which will
+// break the array typing (we will have objects AND an integer).
 ```
 
 This library is a small step towards writing good code and fixing some lacks in PHP: collections typing.
@@ -63,7 +70,7 @@ The library supports most of PHP's primitive types, as well as user-defined obje
 ### For primitive types
 Primitive type collections will allow to store only items of this type (only ints, only booleans, etc.).
 
-Here is the list of available collection classes:
+Here is the list of available primitive collection classes:
 ```php
 Aziule\TypedCollections\ArrayCollection;
 Aziule\TypedCollections\BooleanCollection;
@@ -72,7 +79,7 @@ Aziule\TypedCollections\IntCollection;
 Aziule\TypedCollections\StringCollection;
 ```
 
-Example: empty collection
+**Empty collection**
 ```php
 use Aziule\TypedCollections\IntCollection;
 
@@ -84,7 +91,7 @@ foreach ($collection as $item) {
 }
 ```
 
-Example: pre-filled collection
+**Pre-filled collection**
 ```php
 use Aziule\TypedCollections\StringCollection;
 
@@ -101,7 +108,7 @@ echo count($collection); // 4
 ### For user-defined objects
 User-defined objects collections will all use the `Aziule\TypedCollections\ObjectCollection`.
 
-Example:
+**Example**
 ```php
 use Aziule\TypedCollections\ObjectCollection;
 
