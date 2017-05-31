@@ -25,7 +25,7 @@ abstract class PrimitiveTypedCollection extends TypedCollection
     public function checkItem($item)
     {
         if (gettype($item) !== $this->getType()) {
-            throw new InvalidItemTypeException(sprintf('Item must be of type %s (%s given)', $this->type, gettype($item)));
+            throw new InvalidItemTypeException(sprintf('Item must be of type %s (%s given)', $this->getType(), gettype($item)));
         }
     }
 
