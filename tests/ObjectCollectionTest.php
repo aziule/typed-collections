@@ -43,6 +43,12 @@ class ObjectCollectionTest extends AbstractCollectionTest
         new ObjectCollection(\stdClass::class, $initialData);
     }
 
+    public function test_get_class()
+    {
+        $collection = new ObjectCollection(\stdClass::class);
+        $this->assertEquals('stdClass', $collection->getClass());
+    }
+
     /**
      * @param mixed $value
      * @return \stdClass

@@ -45,4 +45,12 @@ class ObjectCollection extends TypedCollection
             );
         }
     }
+
+    /**
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
 }
