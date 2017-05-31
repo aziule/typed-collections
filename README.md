@@ -51,7 +51,7 @@ and the code should be easily readable and understandable.
 
 Install it via [Composer](https://getcomposer.org):
 ```
-composer install aziule/typed-collections
+composer require aziule/typed-collections
 ```
 
 # Documentation
