@@ -10,8 +10,7 @@ abstract class TypedCollection implements TypedCollectionInterface
     private $items;
 
     /**
-     * @param mixed $offset
-     * @return bool
+     * @inheritdoc
      */
     public function offsetExists($offset)
     {
@@ -19,8 +18,7 @@ abstract class TypedCollection implements TypedCollectionInterface
     }
 
     /**
-     * @param mixed $offset
-     * @return mixed|null
+     * @inheritdoc
      */
     public function offsetGet($offset)
     {
@@ -44,7 +42,7 @@ abstract class TypedCollection implements TypedCollectionInterface
     }
 
     /**
-     * @param mixed $offset
+     * @inheritdoc
      */
     public function offsetUnset($offset)
     {
@@ -56,7 +54,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      * @throws InvalidItemTypeException
      * @return $this
      */
-    public function setItems(array $items)
+    protected function setItems(array $items)
     {
         foreach ($items as $item) {
             $this->checkItem($item);
