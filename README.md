@@ -6,9 +6,9 @@
 >
 > Jump to the [installation](#installation) or [documentation](#documentation)
 
-PHP is (somehow) good, but its dynamically typed nature can lead bad developers to write abominable code. And even more than one can think.
+PHP is (somehow) good, but its dynamically typed nature can lead bad developers to write abominable code. And even more often than one can think.
 
-This is especially true for collection of items, where you can only rely on the PHPDoc (if any / if up-to-date / if accurate) 
+This is especially true for collections (arrays) of items, where one can only rely on the PHPDoc (if any / if up-to-date / if accurate) 
 or on a variable's name to guess what the array actually contains:
 
 ```php
@@ -136,4 +136,9 @@ use Aziule\TypedCollections\ObjectCollection;
 
 $collection = new ObjectCollection(\stdClass::class);
 echo $collection->getClass(); // 'stdClass'
+```
+
+## Test
+```php
+./vendor/bin/phpunit tests
 ```
