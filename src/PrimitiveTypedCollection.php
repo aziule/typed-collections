@@ -10,7 +10,7 @@ abstract class PrimitiveTypedCollection extends TypedCollection
      * @param array $items
      * @throws InvalidItemTypeException
      */
-    public function __construct(array $items)
+    public function __construct(array $items = [])
     {
         if (count($items) === 0 ) {
             return;
