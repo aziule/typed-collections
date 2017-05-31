@@ -1,6 +1,6 @@
 # Typed Collections
 
-> TLDR;
+> ## TL;DR
 >
 > typed-collections is a library for **enforcing the typing** of any collection (array) of items.
 >
