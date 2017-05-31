@@ -4,7 +4,7 @@ namespace Aziule\TypedCollections;
 
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-interface TypedCollectionInterface
+interface TypedCollectionInterface extends \ArrayAccess, \Iterator, \Countable
 {
     /**
      * @param mixed $item
