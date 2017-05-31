@@ -12,6 +12,10 @@ abstract class PrimitiveTypedCollection extends TypedCollection
      */
     public function __construct(array $items)
     {
+        if (count($items) === 0 ) {
+            return;
+        }
+
         $this->setItems($items);
     }
 
