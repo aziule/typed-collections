@@ -12,15 +12,21 @@ class ObjectCollection extends TypedCollection
 
     /**
      * @param string $class
+     * @param array $items
      * @throws ClassNotFoundException
+     * @throws InvalidItemTypeException
      */
-    public function __construct($class)
+    public function __construct($class, array $items = [])
     {
         if (!class_exists($class)) {
             throw new ClassNotFoundException(sprintf('Class "%s" does not exist', $class));
         }
 
         $this->class = $class;
+
+        if (count($items) > 0) {
+            $this->setItems($items);
+        }
     }
 
     /**
@@ -29,7 +35,14 @@ class ObjectCollection extends TypedCollection
     public function checkItem($item)
     {
         if (!$item instanceof $this->class) {
-            throw new InvalidItemTypeException(sprintf('Item must be of type "%s" ("%s" given)', $this->class, get_class($item)));
+            $itemType = gettype($item);
+
+            throw new InvalidItemTypeException(
+                sprintf(
+                    'Item must be of type "%s" ("%s" given)',
+                    $this->class, $itemType === 'object' ? get_class($item) : $itemType
+                )
+            );
         }
     }
 }
