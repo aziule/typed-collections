@@ -5,10 +5,17 @@ namespace Aziule\TypedCollections;
 use Aziule\TypedCollections\Exception\InvalidClassException;
 use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
-abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess
+abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess, \Iterator
 {
     /** @var array */
     private $items;
+
+    /**
+     * Used by the \Iterator interface's methods
+     *
+     * @var int
+     */
+    private $position = 0;
 
     /**
      * @param mixed $offset
@@ -66,5 +73,45 @@ abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess
         $this->items = $items;
 
         return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function current()
+    {
+        return $this->items[$this->position];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function next()
+    {
+        ++$this->position;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function key()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function valid()
+    {
+        return isset($this->items[$this->position]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rewind()
+    {
+        $this->position = 0;
     }
 }
