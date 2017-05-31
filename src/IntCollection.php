@@ -4,8 +4,11 @@ namespace Aziule\TypedCollections;
 
 class IntCollection extends PrimitiveTypedCollection
 {
-    public function __construct()
+    /**
+     * @inheritdoc
+     */
+    protected function getType()
     {
-        $this->type = 'integer';
+        return 'integer';
     }
 }

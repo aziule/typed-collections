@@ -4,8 +4,11 @@ namespace Aziule\TypedCollections;
 
 class ArrayCollection extends PrimitiveTypedCollection
 {
-    public function __construct()
+    /**
+     * @inheritdoc
+     */
+    protected function getType()
     {
-        $this->type = 'array';
+        return 'array';
     }
 }

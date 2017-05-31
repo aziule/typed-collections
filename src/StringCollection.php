@@ -4,8 +4,11 @@ namespace Aziule\TypedCollections;
 
 class StringCollection extends PrimitiveTypedCollection
 {
-    public function __construct()
+    /**
+     * @inheritdoc
+     */
+    protected function getType()
     {
-        $this->type = 'string';
+        return 'string';
     }
 }

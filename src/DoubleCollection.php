@@ -2,10 +2,13 @@
 
 namespace Aziule\TypedCollections;
 
-class BooleanCollection extends PrimitiveTypedCollection
+class DoubleCollection extends PrimitiveTypedCollection
 {
-    public function __construct()
+    /**
+     * @inheritdoc
+     */
+    protected function getType()
     {
-        $this->type = 'double';
+        return 'double';
     }
 }

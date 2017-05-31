@@ -4,8 +4,11 @@ namespace Aziule\TypedCollections;
 
 class BooleanCollection extends PrimitiveTypedCollection
 {
-    public function __construct()
+    /**
+     * @inheritdoc
+     */
+    protected function getType()
     {
-        $this->type = 'boolean';
+        return 'boolean';
     }
 }

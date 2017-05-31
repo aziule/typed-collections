@@ -51,4 +51,20 @@ abstract class TypedCollection implements TypedCollectionInterface, \ArrayAccess
     {
         unset($this->items[$offset]);
     }
+
+    /**
+     * @param array $items
+     * @throws InvalidItemTypeException
+     * @return $this
+     */
+    public function setItems(array $items)
+    {
+        foreach ($items as $item) {
+            $this->checkItem($item);
+        }
+
+        $this->items = $items;
+
+        return $this;
+    }
 }

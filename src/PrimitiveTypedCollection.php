@@ -6,16 +6,27 @@ use Aziule\TypedCollections\Exception\InvalidItemTypeException;
 
 abstract class PrimitiveTypedCollection extends TypedCollection
 {
-    /** @var string */
-    protected $type;
+    /**
+     * @param array $items
+     * @throws InvalidItemTypeException
+     */
+    public function __construct(array $items)
+    {
+        $this->setItems($items);
+    }
 
     /**
      * @inheritdoc
      */
     public function checkItem($item)
     {
-        if (gettype($item) !== $this->type) {
+        if (gettype($item) !== $this->getType()) {
             throw new InvalidItemTypeException(sprintf('Item must be of type %s (%s given)', $this->type, gettype($item)));
         }
     }
+
+    /**
+     * @return string
+     */
+    abstract protected function getType();
 }
