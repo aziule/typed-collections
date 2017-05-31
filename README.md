@@ -139,6 +139,6 @@ echo $collection->getClass(); // 'stdClass'
 ```
 
 ## Test
-```php
+```sh
 ./vendor/bin/phpunit tests
 ```
