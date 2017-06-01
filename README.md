@@ -107,10 +107,10 @@ echo count($collection); // 4
 
 ### For user-defined objects
 Two different methods exist for creating and passing user-defined objects collections:
-- [Using the `Aziule\TypedCollections\ObjectCollection`](#using-the-objectcollection)
-- [Creating a custom collection class that extends the `ObjectCollection`](#creating-a-custom-collection)
+- [Using `ObjectCollection`](#using-objectcollection)
+- [Creating a custom collection extending `ObjectCollection`](#creating-a-custom-collection)
 
-#### Using the `ObjectCollection`
+#### Using `ObjectCollection`
 **Example**
 ```php
 use Aziule\TypedCollections\ObjectCollection;
@@ -159,7 +159,8 @@ class Item
 {
     private $value;
 
-    public function __construct($value) {
+    public function __construct($value)
+    {
         $this->value = $value;
     }
 }
