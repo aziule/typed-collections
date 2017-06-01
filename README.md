@@ -106,8 +106,11 @@ echo count($collection); // 4
 ```
 
 ### For user-defined objects
-User-defined objects collections will all use the `Aziule\TypedCollections\ObjectCollection`.
+Two different methods exist for creating and passing user-defined objects collections:
+- [Using the `Aziule\TypedCollections\ObjectCollection`](#using-the-objectcollection)
+- [Creating a custom collection class that extends the `ObjectCollection`](#creating-a-custom-collection)
 
+#### Using the `ObjectCollection`
 **Example**
 ```php
 use Aziule\TypedCollections\ObjectCollection;
@@ -143,6 +146,41 @@ use Aziule\TypedCollections\ObjectCollection;
 
 $collection = new ObjectCollection(\stdClass::class);
 echo $collection->getClass(); // 'stdClass'
+```
+
+#### Creating a custom collection
+If you want to pass an even more strongly-typed collection, you can create a custom collection for each type of object you need.
+
+**Example:**
+```php
+use \Aziule\TypedCollections\ObjectCollection;
+
+class Item
+{
+    private $value;
+
+    public function __construct($value) {
+        $this->value = $value;
+    }
+}
+
+class ItemCollection extends ObjectCollection
+{
+    public function __construct(array $items = [])
+    {
+        parent::__construct(Item::class, $items);
+    }
+}
+
+$collection = new ItemCollection();
+$collection[] = new Item('Foo');
+$collection[] = new Item('Bar');
+
+// And then use this collection
+public function doSomething(ItemCollection $itemCollection)
+{
+    // ...
+}
 ```
 
 ## Test

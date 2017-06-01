@@ -10,6 +10,13 @@ abstract class TypedCollection implements TypedCollectionInterface
     private $items;
 
     /**
+     * Used by the methods from the \Iterator interface
+     *
+     * @var int
+     */
+    private $position = 0;
+
+    /**
      * @inheritdoc
      */
     public function offsetExists($offset)
@@ -70,7 +77,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      */
     public function current()
     {
-        return current($this->items);
+        return $this->items[$this->position];
     }
 
     /**
@@ -78,7 +85,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      */
     public function next()
     {
-        return next($this->items);
+        ++$this->position;
     }
 
     /**
@@ -86,7 +93,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      */
     public function key()
     {
-        return key($this->items);
+        return $this->position;
     }
 
     /**
@@ -94,7 +101,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      */
     public function valid()
     {
-        return key($this->items) !== null;
+        return isset($this->items[$this->position]);
     }
 
     /**
@@ -102,7 +109,7 @@ abstract class TypedCollection implements TypedCollectionInterface
      */
     public function rewind()
     {
-        return rewind($this->items);
+        $this->position = 0;
     }
 
     /**
