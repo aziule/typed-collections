@@ -2,23 +2,15 @@
 
 > ## TL;DR
 >
-> typed-collections is a library for **enforcing the typing** of any collection (array) of items.
+> typed-collections is a project aiming to sensibilise developers to write good code and documentation when it comes to manipulating arrays in PHP.
 >
 > Jump to the [installation](#installation) or [documentation](#documentation)
 
-PHP is (somehow) good, but its dynamically typed nature can lead bad developers to write abominable code. And even more often than one can think.
-
-This is especially true for collections (arrays) of items, where one can only rely on the PHPDoc (if any / if up-to-date / if accurate) 
-or on a variable's name to guess what the array actually contains:
+PHP's dynamically typed nature can lead bad developers to write abominable code. This is especially true for collections (arrays) of items, where one can only rely on the PHPDoc (if any, up-to-date and accurate) or on a variable's name to guess what the array actually contains:
 
 **Absolute worst case:**
 ```php
-public function ($elements); // WTF is inside this $elements?
-```
-
-**Very bad:**
-```php
-public function (array $ips); // WTF is inside this array? Strings? Ints? Objects? Is it an associative array? Jesus F*
+public function ($elements); // Too vague
 ```
 
 **Bad - and unfortunately, too common:**
@@ -26,26 +18,16 @@ public function (array $ips); // WTF is inside this array? Strings? Ints? Object
 /**
 * @param array $ips
 */
-public function (array $ips);
-
-// OK it's an array, but still: an array of WHAT?
+public function (array $ips); // Still too vague (can be associative, contain objects, etc.)
 ```
 
-**Considered the "best" - still not convincing:**
+**Common practice**
 ```php
 /**
 * @param MyObject[] $objects
 */
-public function (array $objects);
-
-// WOW, we now have some "typing". But still, we can do $objects[] = 42, which will
-// break the array typing (we will have objects AND an integer).
+public function (array $objects); // Best practice
 ```
-
-This library is a small step towards writing good code and fixing some lacks in PHP: collections typing.
-
-Good developers should not need it as naming, doc, tests, etc. should be well done, the arrays should be well-structured,
-and the code should be easily readable and understandable.
 
 # Installation
 
